@@ -32,6 +32,8 @@ namespace DapperRestApiCustomService.Controllers
 
 		#endregion
 
+		#region CreateBlog
+
 		[HttpPost]
 		public async Task<IActionResult> CreateBlog([FromBody] BlogModel blog)
 		{
@@ -71,6 +73,8 @@ namespace DapperRestApiCustomService.Controllers
 				return StatusCode(500, $"Internal server error: {ex.Message}");
 			}
 		}
+
+		#endregion
 
 		[HttpPut("{id}")]
 		public async Task<IActionResult> UpdateBlog(int id, [FromBody] BlogModel blog)
