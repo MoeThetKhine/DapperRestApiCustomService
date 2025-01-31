@@ -46,11 +46,16 @@ public class DapperService
 
 	#endregion
 
+	#region QueryFirstOrDefaultAsync
+
 	public async Task<T?> QueryFirstOrDefaultAsync<T>(string query, object? parameters = null)
 	{
 		using var db = CreateConnection();
 		return await db.QueryFirstOrDefaultAsync<T>(query, parameters);
 	}
+
+	#endregion
+
 	public int Execute(string sql, object? parameters = null)
 	{
 		using var db = CreateConnection();
