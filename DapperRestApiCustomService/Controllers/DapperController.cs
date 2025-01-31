@@ -39,6 +39,9 @@ namespace DapperRestApiCustomService.Controllers
 		{
 			try
 			{
+
+				#region Validation
+
 				if (blog is null)
 				{
 					return BadRequest("Please fill all field.");
@@ -55,6 +58,8 @@ namespace DapperRestApiCustomService.Controllers
 				{
 					return BadRequest("Invalid Blog Data");
 				}
+
+				#endregion
 
 				var parameters = new List<SqlParameter>
 			{
