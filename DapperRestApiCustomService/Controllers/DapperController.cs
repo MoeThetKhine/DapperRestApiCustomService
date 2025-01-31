@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
+﻿
 namespace DapperRestApiCustomService.Controllers
 {
 	[Route("api/[controller]")]
