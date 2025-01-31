@@ -67,5 +67,32 @@ namespace DapperRestApiCustomService.Controllers
 				return StatusCode(500, $"Internal server error: {ex.Message}");
 			}
 		}
+
+		[HttpPut("{id}")]
+		public async Task<IActionResult> UpdateBlog(int id, [FromBody] BlogModel blog)
+		{
+			try
+			{
+				if (blog == null || string.IsNullOrWhiteSpace(blog.BlogTitle) || string.IsNullOrWhiteSpace(blog.BlogAuthor))
+				{
+					return BadRequest("Invalid blog data.");
+				}
+
+				var parameters = new
+				{
+					BlogId = id,
+					BlogTitle = blog.BlogTitle,
+					BlogAuthor = blog.BlogAuthor,
+					BlogContent = blog.BlogContent ?? ""
+				};
+
+				int result = await _dapperService.ExecuteAsync(Query.UpdateBlogQuery, parameters);
+				return result > 0 ? Ok("Blog updated successfully.") : NotFound("Blog not found.");
+			}
+			catch (Exception ex)
+			{
+				return StatusCode(500, $"Internal server error: {ex.Message}");
+			}
+		}
 	}
 }
