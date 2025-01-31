@@ -1,6 +1,5 @@
-﻿namespace DapperRestApiCustomService
+﻿namespace DapperRestApiCustomService;
+
+public class DapperService
 {
-	public class DapperService
-	{
-	}
 }
