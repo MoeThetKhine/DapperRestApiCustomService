@@ -33,18 +33,31 @@ namespace DapperRestApiCustomService.Controllers
 		{
 			try
 			{
-				if (blog == null || string.IsNullOrWhiteSpace(blog.BlogTitle) || string.IsNullOrWhiteSpace(blog.BlogAuthor))
+				if (blog is null)
 				{
-					return BadRequest("Invalid blog data.");
+					return BadRequest("Please fill all field.");
+				}
+				if (string.IsNullOrWhiteSpace(blog.BlogTitle))
+				{
+					return BadRequest("Invalid Blog Data.");
+				}
+				if (string.IsNullOrWhiteSpace(blog.BlogAuthor))
+				{
+					return BadRequest("Invalid Blog Data");
+				}
+				if (string.IsNullOrWhiteSpace(blog.BlogContent))
+				{
+					return BadRequest("Invalid Blog Data");
 				}
 
-				var parameters = new
-				{
-					BlogTitle = blog.BlogTitle,
-					BlogAuthor = blog.BlogAuthor,
-					BlogContent = blog.BlogContent ?? "",
-					DeleteFlag = false
-				};
+				var parameters = new List<SqlParameter>
+			{
+				new("@BlogTitle",blog.BlogTitle),
+				new("@BlogAuthor",blog.BlogAuthor),
+				new("@BlogContent",blog.BlogContent),
+				new("@DeleteFlag", false),
+			};
+
 
 				int result = await _dapperService.ExecuteAsync(Query.CreateBlogQuery, parameters);
 				return result > 0 ? Ok("Blog created successfully.") : StatusCode(500, "Failed to create blog.");
