@@ -36,11 +36,15 @@ public class DapperService
 
 	#endregion
 
+	#region QueryFirstOrDefault
+
 	public T? QueryFirstOrDefault<T>(string query, object? parameters = null)
 	{
 		using var db = CreateConnection();
 		return db.QueryFirstOrDefault<T>(query, parameters);
 	}
+
+	#endregion
 
 	public async Task<T?> QueryFirstOrDefaultAsync<T>(string query, object? parameters = null)
 	{
