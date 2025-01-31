@@ -12,5 +12,12 @@
 
 		public static string CreateBlogQuery { get; } =
 		"INSERT INTO dbo.Tbl_Blog (BlogTitle, BlogAuthor, BlogContent, DeleteFlag) VALUES (@BlogTitle, @BlogAuthor, @BlogContent, @DeleteFlag);";
+
+		public static string UpdateBlogQuery { get; } =
+		@"UPDATE dbo.Tbl_Blog 
+	  SET BlogTitle = @BlogTitle, 
+	      BlogAuthor = @BlogAuthor, 
+	      BlogContent = @BlogContent 
+	  WHERE BlogId = @BlogId";
 	}
 }
