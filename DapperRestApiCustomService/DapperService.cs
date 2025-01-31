@@ -28,4 +28,10 @@ public class DapperService
 		using var db = CreateConnection();
 		return db.QueryFirstOrDefault<T>(query, parameters);
 	}
+
+	public async Task<T?> QueryFirstOrDefaultAsync<T>(string query, object? parameters = null)
+	{
+		using var db = CreateConnection();
+		return await db.QueryFirstOrDefaultAsync<T>(query, parameters);
+	}
 }
