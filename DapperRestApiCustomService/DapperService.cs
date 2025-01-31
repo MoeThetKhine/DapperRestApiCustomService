@@ -1,8 +1,4 @@
-﻿using Dapper;
-using Microsoft.Data.SqlClient;
-using System.Data;
-
-namespace DapperRestApiCustomService;
+﻿namespace DapperRestApiCustomService;
 
 public class DapperService
 {
