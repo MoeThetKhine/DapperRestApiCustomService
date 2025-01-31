@@ -81,6 +81,8 @@ namespace DapperRestApiCustomService.Controllers
 
 		#endregion
 
+		#region Update Blog
+
 		[HttpPut("{id}")]
 		public async Task<IActionResult> UpdateBlog(int id, [FromBody] BlogModel blog)
 		{
@@ -107,6 +109,8 @@ namespace DapperRestApiCustomService.Controllers
 				return StatusCode(500, $"Internal server error: {ex.Message}");
 			}
 		}
+
+		#endregion
 
 		[HttpDelete("{id}")]
 		public async Task<IActionResult> DeleteBlog(int id)
