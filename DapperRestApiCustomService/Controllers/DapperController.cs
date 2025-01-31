@@ -14,6 +14,8 @@ namespace DapperRestApiCustomService.Controllers
 			_dapperService = dapperService;
 		}
 
+		#region GetAllBlogs
+
 		[HttpGet]
 		public async Task<IActionResult> GetAllBlogs()
 		{
@@ -27,6 +29,8 @@ namespace DapperRestApiCustomService.Controllers
 				return StatusCode(500, $"Internal server error: {ex.Message}");
 			}
 		}
+
+		#endregion
 
 		[HttpPost]
 		public async Task<IActionResult> CreateBlog([FromBody] BlogModel blog)
