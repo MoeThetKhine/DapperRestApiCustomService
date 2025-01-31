@@ -6,9 +6,14 @@ namespace DapperRestApiCustomService;
 
 public class DapperService
 {
+
+	#region Connection
+
 	private readonly string _connectionString = "Data Source=.;Database=DotNetTrainingBatch5;User Id=sa;Password=sasa@123;TrustServerCertificate=True;";
 
 	private IDbConnection CreateConnection() => new SqlConnection(_connectionString);
+
+	#endregion
 
 	public List<T> Query<T>(string query, object? parameters = null)
 	{
