@@ -66,9 +66,13 @@ public class DapperService
 
 	#endregion
 
+	#region ExecuteAsync
+
 	public async Task<int> ExecuteAsync(string sql, object? parameters = null)
 	{
 		using var db = CreateConnection();
 		return await db.ExecuteAsync(sql, parameters);
 	}
+
+	#endregion
 }
